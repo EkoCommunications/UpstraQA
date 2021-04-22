@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 // import org.openqa.selenium.Keys;
 
-public class loginEKOTest {
+public class goodTest {
 
     private WebDriver driver;
     private static final String BASE_URL = "https://eko-dev.ekoapp.com/";
@@ -36,18 +36,9 @@ public class loginEKOTest {
     }
 
     @Test
-    public void testLoginWithCorect() {
-        driver.findElement(By.id("username")).sendKeys("chaddanai");
+    public void testLoginWithIncorrectUser() {
+        driver.findElement(By.id("username")).sendKeys("chaddanai2");
         driver.findElement(By.id("password")).sendKeys("password");
-        driver.findElement(By.xpath("//button[contains(@class,'styles__Submit')]")).click();
-        String userMessage = driver.findElement(By.xpath("//span[contains(text(),'Chaddanai')]")).getText();
-        Assert.assertEquals(userMessage, "Chaddanai");
-    }
-
-    @Test
-    public void testLoginWithIncorrectPassword() {
-        driver.findElement(By.id("username")).sendKeys("chaddanai");
-        driver.findElement(By.id("password")).sendKeys("incorrect");
         driver.findElement(By.xpath("//button[contains(@class,'styles__Submit')]")).click();
         // String userMessage = driver.findElement(By.xpath("//div[contains(@class,'ant-notification-notice-message')]")).getText();
         String userMessage = driver.findElement(By.xpath("//*[contains(text(),'The username and password you entered did not match our records. Please double-check and try again.')]")).getText();
